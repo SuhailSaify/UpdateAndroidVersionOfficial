@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkbg"
+    android:orientation="vertical"
+
+    tools:context=".ScanActivity">
+
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circular_progress"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_background_progressbar_width="15dp"
+        app:cpb_progressbar_color="@color/colorPrimary"
+        app:cpb_progressbar_width="10dp" />
+
+    <TextView
+
+        android:id="@+id/progresstext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/circular_progress"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="100%"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progresstext"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Checking for Updates, pleasse wait"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp" />
+
+</RelativeLayout>
