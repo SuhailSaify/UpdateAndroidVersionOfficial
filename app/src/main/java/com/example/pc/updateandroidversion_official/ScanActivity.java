@@ -16,15 +16,17 @@ import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 public class ScanActivity extends AppCompatActivity {
     CircularProgressBar circularProgressBar;
     TextView textView;
-TextView textView2;
+    TextView textView2;
     ActionBar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        textView2=findViewById(R.id.text);
+        textView2 = findViewById(R.id.text);
         circularProgressBar = findViewById(R.id.circular_progress);
         textView = findViewById(R.id.progresstext);
         toolbar = getSupportActionBar();
@@ -32,24 +34,29 @@ TextView textView2;
 
         textView2.setText("Checking for Updates, pleasse wait");
         Handler handler1 = new Handler();
+        Handler handler4 = new Handler();
         for (int a = 1; a <= 100; a++) {
             final int finalA = a;
-            handler1.postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    circularProgressBar.setProgress(finalA);
 
-                    textView.setText(String.valueOf(finalA) + "%");
+                handler1.postDelayed(new Runnable() {
 
-                    if(finalA==100)
-                    {connecttoserver();};
+                    @Override
+                    public void run() {
+                        circularProgressBar.setProgress(finalA);
 
-                }
-            }, 300 * a);
+                        textView.setText(String.valueOf(finalA) + "%");
+
+                        if (finalA == 100) {
+                            connecttoserver();
+                        }
+
+
+                    }
+                }, 300 * a);
+
 
         }
-
 
     }
 
@@ -65,7 +72,6 @@ TextView textView2;
                 public void run() {
                     circularProgressBar.setProgress(finalA);
                     textView.setText(String.valueOf(finalA) + "%");
-
 
 
                 }

@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         app:cpb_background_progressbar_color="@color/colorPrimaryDark"
         app:cpb_background_progressbar_width="15dp"
-        app:cpb_progressbar_color="@color/colorPrimary"
+        app:cpb_progressbar_color="@color/colorAccent"
         app:cpb_progressbar_width="10dp" />
 
     <TextView
