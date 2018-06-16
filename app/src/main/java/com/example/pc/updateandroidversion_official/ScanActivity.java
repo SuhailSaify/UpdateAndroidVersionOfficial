@@ -20,7 +20,6 @@ public class ScanActivity extends AppCompatActivity {
     ActionBar toolbar;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,21 +38,25 @@ public class ScanActivity extends AppCompatActivity {
             final int finalA = a;
 
 
-                handler1.postDelayed(new Runnable() {
+            handler1.postDelayed(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        circularProgressBar.setProgress(finalA);
+                @Override
+                public void run() {
+                    circularProgressBar.setProgress(finalA);
 
-                        textView.setText(String.valueOf(finalA) + "%");
+                    textView.setText(String.valueOf(finalA) + "%");
 
-                        if (finalA == 100) {
-                            connecttoserver();
-                        }
-
+                    if (finalA > 40) {
+                        textView2.setText("Updates found, Confirming..");
 
                     }
-                }, 300 * a);
+                    if (finalA == 100) {
+                        connecttoserver();
+                    }
+
+
+                }
+            }, 300 * a);
 
 
         }
@@ -72,12 +75,85 @@ public class ScanActivity extends AppCompatActivity {
                 public void run() {
                     circularProgressBar.setProgress(finalA);
                     textView.setText(String.valueOf(finalA) + "%");
+                    if (finalA == 100) {
+                        downloadingupdates();
+                    }
 
 
                 }
-            }, 300 * a);
+            }, 100 * a);
 
         }
+
+    }
+
+    private void downloadingupdates() {
+
+        textView2.setText("Connected  \n Downloading Updates,\n don't close the app...\nThis might take a while..!");
+        Handler handler1 = new Handler();
+        for (int a = 1; a <= 100; a++) {
+            final int finalA = a;
+            handler1.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    circularProgressBar.setProgress(finalA);
+                    textView.setText(String.valueOf(finalA) + "%");
+                    if (finalA == 100) {
+                        installingupdates();
+                    }
+
+
+                }
+            }, 400 * a);
+
+        }
+
+    }
+
+    private void installingupdates() {
+
+        textView2.setText("Updates downloaded Successfully \n Installing Updates, don't close the app...\n This might take a while..!");
+        Handler handler1 = new Handler();
+        for (int a = 1; a <= 100; a++) {
+            final int finalA = a;
+            handler1.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    circularProgressBar.setProgress(finalA);
+                    textView.setText(String.valueOf(finalA) + "%");
+                    if (finalA == 100) {
+                        updated();
+                    }
+
+                }
+            }, 400 * a);
+
+        }
+
+    }
+
+    private void updated() {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(ScanActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(ScanActivity.this);
+        }
+        builder.setTitle("Android device has been updated")
+                .setMessage("View Updated Device Info")
+                .setCancelable(false)
+                .setPositiveButton("View", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        finish();
+                        startActivity(new Intent(ScanActivity.this, Device_infoActivity.class));
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
 
     }
 

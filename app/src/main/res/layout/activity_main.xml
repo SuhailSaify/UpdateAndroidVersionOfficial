@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkbg"
+    tools:context=".MainActivity">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -88,4 +98,24 @@
         android:text="100% Safe"
         android:textColor="@color/colorAccent"
         android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/updated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/device_verion"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:text="Samsung"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>
+
+
+
+
+</ScrollView>
