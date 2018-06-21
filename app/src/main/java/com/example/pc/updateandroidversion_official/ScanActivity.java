@@ -1,7 +1,10 @@
 package com.example.pc.updateandroidversion_official;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -9,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
@@ -65,6 +69,8 @@ public class ScanActivity extends AppCompatActivity {
 
     private void connecttoserver() {
 
+        checkconnection();
+
         textView2.setText("Scan Successful \n Connecting to server...");
         Handler handler1 = new Handler();
         for (int a = 1; a <= 100; a++) {
@@ -88,6 +94,8 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     private void downloadingupdates() {
+
+        checkconnection();
 
         textView2.setText("Connected  \n Downloading Updates,\n don't close the app...\nThis might take a while..!");
         Handler handler1 = new Handler();
@@ -113,7 +121,7 @@ public class ScanActivity extends AppCompatActivity {
 
     private void installingupdates() {
 
-        textView2.setText("Updates downloaded Successfully \n Installing Updates, don't close the app...\n This might take a while..!");
+        textView2.setText("Updates downloaded Successfully, \n Installing Updates, don't close the app...\n This might take a while..!");
         Handler handler1 = new Handler();
         for (int a = 1; a <= 100; a++) {
             final int finalA = a;
@@ -186,5 +194,23 @@ public class ScanActivity extends AppCompatActivity {
                 .show();
 
 
+    }
+
+    public void checkconnection() {
+
+        Context context = ScanActivity.this;
+        Boolean isConnected;
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if (!isConnected) {
+            startActivity(new Intent(ScanActivity.this, NoConnectionActivity.class));
+        } else {
+            // Toast.makeText(context, "NOT CONNECTED", Toast.LENGTH_SHORT).show();
+        }
     }
 }

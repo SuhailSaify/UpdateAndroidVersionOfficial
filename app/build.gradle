@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.pc.updateandroidversion_official"
-        minSdkVersion 21
+        applicationId "com.zapezone.pc.updateandroidversion_official"
+        minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -21,7 +21,6 @@ android {
 dependencies {
     implementation 'com.github.nisrulz:easydeviceinfo:2.4.1'
     implementation 'com.github.nisrulz:easydeviceinfo:2.4.1'
-
     implementation 'com.github.nisrulz:easydeviceinfo-ads:2.4.1'
     implementation 'com.mikhaellopez:circularprogressbar:1.1.1'
     implementation "com.android.support:cardview-v7:27.1.1"
